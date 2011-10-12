@@ -346,6 +346,14 @@ class BasecampAPI
       find(:all, :from => :report, :params => options)
     end
   end
+  
+  class Person < Resource
+    parent_resources :project
+    
+    def self.all(project_id)
+      find(:all, :params=>{:project_id => project_id})
+    end
+  end
 
   class Category < Resource
     parent_resources :project
